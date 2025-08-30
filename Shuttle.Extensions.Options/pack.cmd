@@ -1,0 +1,1 @@
+dotnet pack Shuttle.Extensions.Options.csproj -p:DebugType=Embedded -c Debug
