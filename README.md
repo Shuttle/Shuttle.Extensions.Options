@@ -26,9 +26,9 @@ This package provides extensions for configuring and validating `AsyncEvent` opt
 ## Usage
 
 ```csharp
-public class OperationEventArgs(string operation)
+public class OperationEventArgs(string name)
 {
-    public string Operation { get; } = operation;
+    public string Name { get; } = name;
 }
 
 public class ApplicationOptions
@@ -43,19 +43,15 @@ public class Program
     public static async Task Main(string[] args)
     {
         var serviceProvider = new ServiceCollection()
-
             .Configure<ApplicationOptions>(options =>
-            {
-                options.Operation += async args => 
                 {
-                    Console.WriteLine(args.Operation);
+                    options.Operation += async args => 
+                    {
+                        Console.WriteLine(args.Name);
 
-                    await Task.CompletedTask;
-                };
-                    
-                options.Operation += _ => Task.CompletedTask;
-            })
-
+                        await Task.CompletedTask;
+                    };
+                })
             .AddSingleton<IApplicationService, ApplicationService>()
             .BuildServiceProvider();
 
