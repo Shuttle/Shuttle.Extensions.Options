@@ -35,11 +35,11 @@ public class AsyncEvent<T> : IDisposable
         return asyncEvent;
     }
 
-    public async Task InvokeAsync(T eventArgs)
+    public async Task InvokeAsync(T eventArgs, CancellationToken cancellationToken = default)
     {
         List<AsyncEventHandler<T>> handlers;
 
-        await _semaphore.WaitAsync();
+        await _semaphore.WaitAsync(CancellationToken.None);
 
         try
         {
@@ -55,7 +55,7 @@ public class AsyncEvent<T> : IDisposable
             return;
         }
 
-        await Task.WhenAll(handlers.Select(handler => handler.Invoke(eventArgs)));
+        await Task.WhenAll(handlers.Select(handler => handler.Invoke(eventArgs, cancellationToken))).ConfigureAwait(false);
     }
 
     public int Count

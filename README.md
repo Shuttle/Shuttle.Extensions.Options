@@ -1,26 +1,5 @@
 # Shuttle.Extensions.Options
 
-::: code-group
-```sh [.NET CLI]
-dotnet add package Shuttle.Extensions.Options
-```
-```ps [PowerShell]
-PM> Install-Package Shuttle.Extensions.Options
-```
-```xml [PackageReference]
-<PackageReference Include="Shuttle.Extensions.Options" Version="<version>" />
-```
-```sh [packet]
-paket add Shuttle.Extensions.Options
-```
-```sh [Script & Interactive]
-#r "nuget: Shuttle.Extensions.Options, <version>"
-```
-```sh [File-based Apps]
-#:package Shuttle.Extensions.Options@<version>
-```
-:::
-
 This package provides extensions for configuring and validating `AsyncEvent` options in .NET applications.
 
 ## Usage

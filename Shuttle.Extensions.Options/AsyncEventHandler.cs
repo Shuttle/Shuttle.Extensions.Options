@@ -1,3 +1,3 @@
 ﻿namespace Shuttle.Extensions.Options;
 
-public delegate Task AsyncEventHandler<in T>(T eventArgs);
+public delegate Task AsyncEventHandler<in T>(T eventArgs, CancellationToken cancellationToken = default);
